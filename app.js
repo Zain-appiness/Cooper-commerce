@@ -3,11 +3,26 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const customerRoutes= require('./routes/customerRoutes');
+const orderRoutes= require('./routes/orderRoutes');
+const employeeRoutes= require('./routes/employeeRoutes');
+const officeRoute= require('./routes/officeRoutes')
 
 // Import the Sequelize instance (from models/index.js)
 const db = require('./models');  // Adjust the path if necessary
 
 var app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
+//API routes
+
+app.use('/api',customerRoutes);
+app.use('/api',orderRoutes);
+app.use('/api',employeeRoutes);
+app.use('/api',officeRoute)
+
 
 // Test the database connection
 db.sequelize.authenticate()
@@ -35,7 +50,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.json());
 
 
 // catch 404 and forward to error handler
