@@ -1,36 +1,61 @@
-
+// models/orderdetail.js
 module.exports = (sequelize, DataTypes) => {
-    const OrderDetail = sequelize.define('OrderDetail', {
-      orderNumber: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
+  const OrderDetail = sequelize.define('OrderDetail', {
+    orderNumber: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false,
+      field:'ordernumber',
+    },
+    productCode: {
+      type: DataTypes.STRING(15),
+      primaryKey: true,
+      allowNull: false,
+      field:'productcode',
+    },
+    quantityOrdered: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        isInt: true,
+        min: 1,
       },
-      productCode: {
-        type: DataTypes.STRING(15),
-        primaryKey: true,
+      field:'quantityordered',
+    },
+    priceEach: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+      validate: {
+        isDecimal: true,
       },
-      quantityOrdered: DataTypes.INTEGER,
-      priceEach: DataTypes.DECIMAL(10, 2),
-      orderLineNumber: DataTypes.INTEGER,
-    }, {
-      tableName: 'orderdetails',
-      timestamps: false,
+      field:'priceeach',
+    },
+    orderLineNumber: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        isInt: true,
+      },
+      field:'orderlinenumber',
+    },
+  }, {
+    tableName: 'orderdetails',
+    timestamps: false,
+  });
+
+  OrderDetail.associate = models => {
+    // An OrderDetail belongs to an Order
+    OrderDetail.belongsTo(models.Order, {
+      foreignKey: 'orderNumber',
+      as: 'order',
     });
-  
-    OrderDetail.associate = models => {
-    
-      OrderDetail.belongsTo(models.Order, {
-        foreignKey: 'orderNumber',
-        as: 'order',
-      });
-  
-     
-      OrderDetail.belongsTo(models.Product, {
-        foreignKey: 'productCode',
-        as: 'product',
-      });
-    };
-  
-    return OrderDetail;
+
+    // An OrderDetail belongs to a Product
+    OrderDetail.belongsTo(models.Product, {
+      foreignKey: 'productCode',
+      as: 'product',
+    });
   };
-  
+
+  return OrderDetail;
+};

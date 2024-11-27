@@ -6,7 +6,7 @@ const sequelize = new Sequelize({
   dialect: 'postgres',
   host: 'localhost',
   port: 5432,
-  database: 'Copper-ecommerce',
+  database: 'Cooper-Commerce',
   username: 'postgres',
   password: 'zain13',
   logging: false, // Optional, disable logging

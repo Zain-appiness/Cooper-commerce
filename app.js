@@ -22,13 +22,12 @@ db.sequelize.authenticate()
   });
 
   // Sync the models with the database
-db.sequelize.sync({ force: false }) // Use { force: false } to avoid dropping tables
-.then(() => {
-  console.log('Database sync successful.');
-})
-.catch(err => {
-  console.error('Unable to sync the database:', err);
-});
+  db.sequelize.sync({ alter: false }) // Use `force: true` to recreate tables if needed
+  .then(() => {
+    console.log('Database and tables synced successfully!');
+  })
+  .catch((error) => console.error('Sync error:', error));
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
