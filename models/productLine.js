@@ -1,22 +1,22 @@
-// models/productline.js
+
 module.exports = (sequelize, DataTypes) => {
   const ProductLine = sequelize.define('ProductLine', {
     productLine: {
       type: DataTypes.STRING,
       primaryKey: true,
-      field: 'productline', // Matches DB column
+      field: 'productline', 
     },
     textDescription: {
       type: DataTypes.TEXT,
-      field: 'textdescription', // Matches DB column
+      field: 'textdescription', 
     },
     htmlDescription: {
       type: DataTypes.TEXT,
-      field: 'htmldescription', // Matches DB column
+      field: 'htmldescription', 
     },
     image: {
       type: DataTypes.BLOB,
-      field: 'image', // Matches DB column
+      field: 'image', 
     },
   }, {
     tableName: 'productlines',

@@ -1,4 +1,4 @@
-// models/order.js
+
 module.exports = (sequelize, DataTypes) => {
   const Order = sequelize.define('Order', {
     orderNumber: {

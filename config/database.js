@@ -1,4 +1,4 @@
-// config/database.js
+
 const { Sequelize } = require('sequelize');
 
 // Set up for PostgreSQL connection details

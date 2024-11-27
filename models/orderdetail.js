@@ -1,4 +1,4 @@
-// models/orderdetail.js
+
 module.exports = (sequelize, DataTypes) => {
   const OrderDetail = sequelize.define('OrderDetail', {
     orderNumber: {

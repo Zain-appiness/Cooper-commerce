@@ -1,38 +1,38 @@
-// models/employee.js
+
 module.exports = (sequelize, DataTypes) => {
     const Employee = sequelize.define('Employee', {
       employeeNumber: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        field: 'employeenumber', // Matches DB column
+        field: 'employeenumber', 
       },
       lastName: {
         type: DataTypes.STRING,
-        field: 'lastname', // Matches DB column
+        field: 'lastname', 
       },
       firstName: {
         type: DataTypes.STRING,
-        field: 'firstname', // Matches DB column
+        field: 'firstname', 
       },
       extension: {
         type: DataTypes.STRING,
-        field: 'extension', // Matches DB column
+        field: 'extension', 
       },
       email: {
         type: DataTypes.STRING,
-        field: 'email', // Matches DB column
+        field: 'email', 
       },
       officeCode: {
         type: DataTypes.STRING,
-        field: 'officecode', // Matches DB column
+        field: 'officecode', 
       },
       reportsTo: {
         type: DataTypes.INTEGER,
-        field: 'reportsto', // Matches DB column
+        field: 'reportsto', 
       },
       jobTitle: {
         type: DataTypes.STRING,
-        field: 'jobtitle', // Matches DB column
+        field: 'jobtitle', 
       },
     }, {
       tableName: 'employees',

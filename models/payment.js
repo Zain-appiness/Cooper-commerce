@@ -1,4 +1,4 @@
-// models/payment.js
+
 module.exports = (sequelize, DataTypes) => {
   const Payment = sequelize.define('Payment', {
     customerNumber: {

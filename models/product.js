@@ -1,42 +1,42 @@
-// models/product.js
+
 module.exports = (sequelize, DataTypes) => {
     const Product = sequelize.define('Product', {
       productCode: {
         type: DataTypes.STRING(15),
         primaryKey: true,
-        field: 'productcode', // Matches DB column
+        field: 'productcode',
       },
       productName: {
         type: DataTypes.STRING,
-        field: 'productname', // Matches DB column
+        field: 'productname',
       },
       productLine: {
         type: DataTypes.STRING,
-        field: 'productline', // Matches DB column
+        field: 'productline',
       },
       productScale: {
         type: DataTypes.STRING,
-        field: 'productscale', // Matches DB column
+        field: 'productscale',
       },
       productVendor: {
         type: DataTypes.STRING,
-        field: 'productvendor', // Matches DB column
+        field: 'productvendor',
       },
       productDescription: {
         type: DataTypes.TEXT,
-        field: 'productdescription', // Matches DB column
+        field: 'productdescription',
       },
       quantityInStock: {
         type: DataTypes.INTEGER,
-        field: 'quantityinstock', // Matches DB column
+        field: 'quantityinstock',
       },
       buyPrice: {
         type: DataTypes.DECIMAL(10, 2),
-        field: 'buyprice', // Matches DB column
+        field: 'buyprice',
       },
       MSRP: {
         type: DataTypes.DECIMAL(10, 2),
-        field: 'msrp', // Matches DB column
+        field: 'msrp',
       },
     }, {
       tableName: 'products',

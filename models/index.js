@@ -1,5 +1,5 @@
-const sequelize = require('../config/database'); // Import the sequelize instance from config
-const { DataTypes } = require('sequelize');  // DataTypes for defining model columns
+const sequelize = require('../config/database');
+const { DataTypes } = require('sequelize');  
 
 // Create an empty object to hold our models
 const db = {};

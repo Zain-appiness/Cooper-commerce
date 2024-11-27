@@ -1,42 +1,42 @@
-// models/office.js
+
 module.exports = (sequelize, DataTypes) => {
   const Office = sequelize.define('Office', {
     officeCode: {
       type: DataTypes.STRING(10),
       primaryKey: true,
-      field: 'officecode', // Matches DB column
+      field: 'officecode', 
     },
     city: {
       type: DataTypes.STRING,
-      field: 'city', // Matches DB column
+      field: 'city', 
     },
     phone: {
       type: DataTypes.STRING,
-      field: 'phone', // Matches DB column
+      field: 'phone', 
     },
     addressLine1: {
       type: DataTypes.STRING,
-      field: 'addressline1', // Matches DB column
+      field: 'addressline1', 
     },
     addressLine2: {
       type: DataTypes.STRING,
-      field: 'addressline2', // Matches DB column
+      field: 'addressline2', 
     },
     state: {
       type: DataTypes.STRING,
-      field: 'state', // Matches DB column
+      field: 'state', 
     },
     country: {
       type: DataTypes.STRING,
-      field: 'country', // Matches DB column
+      field: 'country', 
     },
     postalCode: {
       type: DataTypes.STRING,
-      field: 'postalcode', // Matches DB column
+      field: 'postalcode', 
     },
     territory: {
       type: DataTypes.STRING,
-      field: 'territory', // Matches DB column
+      field: 'territory', 
     },
   }, {
     tableName: 'offices',
