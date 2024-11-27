@@ -7,9 +7,6 @@ var logger = require('morgan');
 // Import the Sequelize instance (from models/index.js)
 const db = require('./models');  // Adjust the path if necessary
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
 var app = express();
 
 // Test the database connection
@@ -39,8 +36,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
