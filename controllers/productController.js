@@ -1,8 +1,30 @@
 const productService = require('../service/productService');
+const productLineService = require('../service/prouctLineService');
 
 async function createProduct(req, res) {
   try {
-    const productData = req.body;
+    const productData= req.body;
+    const {productLine} = req.body;
+     console.log(req.body);
+
+     let productlineDetail= null;
+    if(productLine){
+      productlineDetail= await productLineService.getProductLine(productLine);
+    }
+
+    if(!productlineDetail && productLine){
+      const defaultProductLineData = {
+        productLine: productLine, // Default name for the product line
+        textDescription: "This is a default product line description.", // Default text description
+        htmlDescription: "<p>This is a default HTML description for the product line.</p>", // Default HTML description
+        image: null, // Optional, can later be replaced with a placeholder BLOB or base64 image
+      };
+
+      const productlineDetail= await productLineService.createProductLine(defaultProductLineData);
+      console.log(productlineDetail)
+
+    }
+
     const product = await productService.createProduct(productData);
     res.status(201).json(product);
   } catch (error) {
@@ -21,4 +43,18 @@ async function getProduct(req, res) {
   }
 }
 
-module.exports = { createProduct, getProduct };
+
+async function getProductById(req,res) {
+  
+  try {
+    const productCode= req.params.id;
+    const productData= await productService.getProductById(productCode);
+    res.status(200).json({
+      message:"Product get by Id",
+      productData,
+    })
+  } catch (error) {
+    res.status(400).json({ error: 'Failed to retrieve product', details: error.message });
+  }
+}
+module.exports = { createProduct, getProduct,getProductById };

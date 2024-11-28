@@ -3,9 +3,9 @@ const routes= express.Router();
 
 const {createOffice,getAllOffices,getOffice}= require('../controllers/officeController')
 
-routes.use('/office/create',createOffice);
-routes.use('/office/get',getAllOffices);
-routes.use('/office/getone/:officeCode',createOffice);
+routes.post('/office/create',createOffice);
+routes.get('/office/get',getAllOffices);
+routes.get('/office/getone/:officeCode',getOffice);
 
 module.exports=routes;
 

@@ -6,7 +6,12 @@ var logger = require('morgan');
 const customerRoutes= require('./routes/customerRoutes');
 const orderRoutes= require('./routes/orderRoutes');
 const employeeRoutes= require('./routes/employeeRoutes');
-const officeRoute= require('./routes/officeRoutes')
+const officeRoute= require('./routes/officeRoutes');
+const orderDetailRoute= require('./routes/orderdetailRoute');
+const paymentRoute=require('./routes/paymentRoutes');
+const productRoute= require('./routes/productRoute');
+const productlineRoute= require('./routes/productLineRoutes');
+
 
 // Import the Sequelize instance (from models/index.js)
 const db = require('./models');  // Adjust the path if necessary
@@ -22,6 +27,10 @@ app.use('/api',customerRoutes);
 app.use('/api',orderRoutes);
 app.use('/api',employeeRoutes);
 app.use('/api',officeRoute)
+app.use('/api',productlineRoute);
+app.use('/api',productRoute);
+app.use('/api',orderDetailRoute);
+app.use('/api',paymentRoute);
 
 
 // Test the database connection

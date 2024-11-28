@@ -1,3 +1,4 @@
+const customer = require('../models/customer');
 const customerService= require('../service/customerService');
 const employeeService= require('../service/employeeService');
 
@@ -54,5 +55,26 @@ async function getCustomer(req,res) {
         });
     }
 }
+async function getCustomerByID(req, res) {
+  try {
+    const customerNumber = req.params.id;  // Get the 'id' from URL params
+    const customer = await customerService.getCustomerByNumber(customerNumber);
+    
+    // If no customer found, return 404
+    if (!customer) {
+      return res.status(404).json({
+        error: 'Customer not found',
+      });
+    }
 
-module.exports = { createCustomer, getCustomer };
+    // Return the customer data with a 200 OK status
+    res.status(200).json(customer);
+  } catch (error) {
+    console.error('Error in getCustomer:', error.message); // Log the error for debugging
+    res.status(500).json({
+      error: 'FAILED TO GET CUSTOMER',
+    });
+  }
+}
+
+module.exports = { createCustomer, getCustomer ,getCustomerByID};

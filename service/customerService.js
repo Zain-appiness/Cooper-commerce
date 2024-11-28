@@ -27,4 +27,22 @@ async function getAllCustomer() {
     
 }
 
-module.exports = { createCustomer, getAllCustomer };
+async function getCustomerByNumber(customerNumber) {
+    try {
+      const customer = await Customer.findOne({
+        where: { customernumber: customerNumber },
+      });
+  
+      // If customer is not found, return null or undefined
+      if (!customer) {
+        return null;
+      }
+  
+      return customer;
+    } catch (error) {
+      throw new Error('Error finding customer: ' + error.message);
+    }
+  }
+  
+
+module.exports = { createCustomer, getAllCustomer,getCustomerByNumber };

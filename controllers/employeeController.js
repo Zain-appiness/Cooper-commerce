@@ -12,7 +12,7 @@ async function createEmployee(req,res) {
           office = await officeService.getOfficeByNumber(officeCoded); // Fetch employee by number
         }
 
-        if (!office && officeCode) {
+        if (!office && officeCoded) {
             // Default employee data if not provided
             const defaultOfficeData = {
               officeCode: officeCoded,
@@ -40,8 +40,8 @@ async function createEmployee(req,res) {
 async function getEmployee(req,res) {
     try {
         const employees=await employeeService.getAllEmployees();
-        console.log(customers);
-        res.status(201).json(customers);
+        console.log(employees);
+        res.status(201).json(employees);
     } catch (error) {
         console.error('Error in getCustomer:', error.message); // Log the error for debugging
         res.status(500).json({

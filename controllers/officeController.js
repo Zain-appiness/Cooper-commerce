@@ -8,11 +8,17 @@ async function createOffice(req, res) {
       message: 'Office created successfully',
       office,
     });
-  } catch (error) {
-    console.error('Error creating office:', error.message);
+  }  catch (error) {
+    console.error('Error creating office:', error);
+    // Log detailed error message
+    if (error.errors) {
+      error.errors.forEach(e => {
+        console.error(`Validation Error: ${e.message}`);
+      });
+    }
     res.status(400).json({
-      error: 'FAILED TO CREATE OFFICE',
-      details: error.message,
+      error: 'Validation error',
+      message: error.errors ? error.errors.map(e => e.message) : error.message,
     });
   }
 }

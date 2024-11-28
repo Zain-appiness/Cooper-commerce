@@ -15,7 +15,9 @@ async function getOfficeByNumber(officeCode) {
 // Function to create a new office
 async function createOffice(officeData) {  // Use officeData, not just officeCode
   try {
-    const office = await Office.create(officeData);  // Pass the full office data object
+    console.log(officeData);
+    const office = await Office.create(officeData); 
+    console.log(office) // Pass the full office data object
     return office;
   } catch (error) {
     throw new Error('Error creating office: ' + error.message);

@@ -9,7 +9,7 @@ const sequelize = new Sequelize({
   database: 'cooper-commerce',
   username: 'root',
   password: 'zain13',
-  logging: false, // Optional, disable logging
+  logging: console.log, // Optional, disable logging
 });
 
 module.exports = sequelize;

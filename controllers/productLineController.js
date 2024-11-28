@@ -21,4 +21,4 @@ async function getProductLine(req, res) {
   }
 }
 
-module.exports = { createProductLine, getProductLine };
+module.exports = { createProductLine, getProductLine};

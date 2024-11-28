@@ -12,7 +12,7 @@ async function createProductLine(productLineData) {
 async function getProductLine(productLineCode) {
   try {
     const productLine = await ProductLine.findOne({
-      where: { productLineCode },
+      where: { productLine: productLineCode },
       include: ['products']
     });
     return productLine;
@@ -21,4 +21,6 @@ async function getProductLine(productLineCode) {
   }
 }
 
-module.exports = { createProductLine, getProductLine };
+
+
+module.exports = { createProductLine, getProductLine};
