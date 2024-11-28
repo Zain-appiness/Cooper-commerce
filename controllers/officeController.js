@@ -10,7 +10,7 @@ async function createOffice(req, res) {
     });
   }  catch (error) {
     console.error('Error creating office:', error);
-    // Log detailed error message
+    
     if (error.errors) {
       error.errors.forEach(e => {
         console.error(`Validation Error: ${e.message}`);

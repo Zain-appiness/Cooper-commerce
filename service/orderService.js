@@ -15,19 +15,19 @@ async function createOrder(orderData) {
         if(!customer && customerNumber){
 
             const defaultCustomerData = {
-                customerNumber: customerNumber, // A unique number, ensure it is managed properly to avoid conflicts
+                customerNumber: customerNumber,
                 customerName: "Default Customer",
                 contactLastName: "Unknown",
                 contactFirstName: "Unknown",
                 phone: "000-000-0000",
                 addressLine1: "Default Address Line 1",
-                addressLine2: null, // Optional
+                addressLine2: null,
                 city: "Default City",
-                state: null, // Optional
-                postalCode: null, // Optional
+                state: null,
+                postalCode: null,
                 country: "Default Country",
-                salesRepEmployeeNumber: null, // Assuming no sales representative is assigned
-                creditLimit: 0.0, // Default credit limit
+                salesRepEmployeeNumber: null, 
+                creditLimit: 0.0, 
               };
 
               customer= await customerService.createCustomer(defaultCustomerData);

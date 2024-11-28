@@ -33,7 +33,7 @@ async function getCustomerByNumber(customerNumber) {
         where: { customernumber: customerNumber },
       });
   
-      // If customer is not found, return null or undefined
+     
       if (!customer) {
         return null;
       }

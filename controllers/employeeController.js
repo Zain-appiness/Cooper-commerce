@@ -13,15 +13,14 @@ async function createEmployee(req,res) {
         }
 
         if (!office && officeCoded) {
-            // Default employee data if not provided
             const defaultOfficeData = {
               officeCode: officeCoded,
-              city: "Unknown",  // Default value
-              addressLine1: "Unknown", // Default value
+              city: "Unknown",  
+              addressLine1: "Unknown", 
               addressLine2: "Unknown"
             };
           
-            // Create the employee using the default values
+          
             office = await officeService.createOffice(defaultOfficeData);
           }
 
@@ -43,7 +42,7 @@ async function getEmployee(req,res) {
         console.log(employees);
         res.status(201).json(employees);
     } catch (error) {
-        console.error('Error in getCustomer:', error.message); // Log the error for debugging
+        console.error('Error in getCustomer:', error.message); 
         res.status(500).json({
           error: 'FAILED TO GET CUSTOMER',
         });

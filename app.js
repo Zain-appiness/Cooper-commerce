@@ -13,8 +13,8 @@ const productRoute= require('./routes/productRoute');
 const productlineRoute= require('./routes/productLineRoutes');
 
 
-// Import the Sequelize instance (from models/index.js)
-const db = require('./models');  // Adjust the path if necessary
+// Import the Sequelize instance 
+const db = require('./models');  
 
 var app = express();
 app.use(express.json());

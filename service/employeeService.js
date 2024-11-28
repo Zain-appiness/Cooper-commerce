@@ -1,7 +1,7 @@
 const { Employee } = require('../models'); // Import your Employee model
 const officeService= require('../service/officeService')
 
-// Function to get an employee by employee number
+
 async function getEmployeeByNumber(employeeNumber) {
   try {
     const employee = await Employee.findOne({
@@ -13,7 +13,7 @@ async function getEmployeeByNumber(employeeNumber) {
   }
 }
 
-// Function to create a new employee
+
 async function createEmployee(employeeData) {
   try {
     
@@ -27,15 +27,15 @@ async function createEmployee(employeeData) {
     }
 
     if (!office && officeCoded) {
-        // Default employee data if not provided
+        
         const defaultOfficeData = {
           officeCode: officeCoded,
-          city: "Unknown",  // Default value
-          addressLine1: "Unknown", // Default value
+          city: "Unknown",  
+          addressLine1: "Unknown", 
           addressLine2: "Unknown"
         };
       
-        // Create the employee using the default values
+  
         office = await officeService.createOffice(defaultOfficeData);
       }
 

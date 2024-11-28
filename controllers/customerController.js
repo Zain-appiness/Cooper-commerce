@@ -10,28 +10,28 @@ async function createCustomer(req, res) {
 
     let employee = null;
     if (salesRepEmployeeNumber) {
-      employee = await employeeService.getEmployeeByNumber(salesRepEmployeeNumber); // Fetch employee by number
+      employee = await employeeService.getEmployeeByNumber(salesRepEmployeeNumber); 
     }
 
     if (!employee && salesRepEmployeeNumber) {
       // Default employee data if not provided
       const defaultEmployeeData = {
         employeeNumber: salesRepEmployeeNumber,
-        lastName: "Unknown",  // Default value
-        firstName: "Unknown", // Default value
-        extension: "000",     // Default value
-        email: "no-email@company.com",  // Default value
-        officeCode: "1",     // Default value (assuming officeCode "1" exists)
-        reportsTo: null,     // Default value (no manager assigned)
-        jobTitle: "Sales Rep"  // Default value
+        lastName: "Unknown",  
+        firstName: "Unknown",
+        extension: "000",    
+        email: "no-email@company.com", 
+        officeCode: "1",     
+        reportsTo: null,     
+        jobTitle: "Sales Rep" 
       };
 
-      // Create the employee using the default values
+      
       employee = await employeeService.createEmployee(defaultEmployeeData);
     }
 
-    // Now pass the customer data to the service to create the customer
-    const customer = await customerService.createCustomer(req.body);  // Pass req.body here
+   
+    const customer = await customerService.createCustomer(req.body); 
     res.status(201).json(customer);
 
   } catch (error) {
@@ -49,7 +49,7 @@ async function getCustomer(req,res) {
         console.log(customers);
         res.status(201).json(customers);
     } catch (error) {
-        console.error('Error in getCustomer:', error.message); // Log the error for debugging
+        console.error('Error in getCustomer:', error.message); 
         res.status(500).json({
           error: 'FAILED TO GET CUSTOMER',
         });
@@ -57,20 +57,20 @@ async function getCustomer(req,res) {
 }
 async function getCustomerByID(req, res) {
   try {
-    const customerNumber = req.params.id;  // Get the 'id' from URL params
+    const customerNumber = req.params.id; 
     const customer = await customerService.getCustomerByNumber(customerNumber);
     
-    // If no customer found, return 404
+    
     if (!customer) {
       return res.status(404).json({
         error: 'Customer not found',
       });
     }
 
-    // Return the customer data with a 200 OK status
+    
     res.status(200).json(customer);
   } catch (error) {
-    console.error('Error in getCustomer:', error.message); // Log the error for debugging
+    console.error('Error in getCustomer:', error.message);
     res.status(500).json({
       error: 'FAILED TO GET CUSTOMER',
     });

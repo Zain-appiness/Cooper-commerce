@@ -1,10 +1,9 @@
-const { Office } = require('../models'); // Import your Office model
+const { Office } = require('../models');
 
-// Function to get an office by office number
 async function getOfficeByNumber(officeCode) {
   try {
     const office = await Office.findOne({
-      where: { officeCode: officeCode }, // Correct query to fetch office by officeCode
+      where: { officeCode: officeCode }, 
     });
     return office;
   } catch (error) {
@@ -12,12 +11,12 @@ async function getOfficeByNumber(officeCode) {
   }
 }
 
-// Function to create a new office
-async function createOffice(officeData) {  // Use officeData, not just officeCode
+
+async function createOffice(officeData) {  
   try {
     console.log(officeData);
     const office = await Office.create(officeData); 
-    console.log(office) // Pass the full office data object
+    console.log(office) 
     return office;
   } catch (error) {
     throw new Error('Error creating office: ' + error.message);
@@ -26,7 +25,7 @@ async function createOffice(officeData) {  // Use officeData, not just officeCod
 
 async function getAllOfficeDetails() {
   try {
-    const offices = await Office.findAll();  // Fetch all offices, not employees
+    const offices = await Office.findAll(); 
     return offices;
   } catch (error) {
     throw new Error('Error fetching all offices: ' + error.message);

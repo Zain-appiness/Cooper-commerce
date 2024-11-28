@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true, // Ensures the name is not empty
+        notEmpty: true, 
       },
       
       field:'customername',
@@ -81,7 +81,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'employees', // References the employees table
+        model: 'employees', 
         key: 'employeenumber',
       },
       field:'salesrepemployeenumber',
@@ -90,7 +90,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: true,
       validate: {
-        isDecimal: true, // Ensures a valid decimal value
+        isDecimal: true, 
         min: 0,
       },
       field:'creditlimit',
@@ -101,13 +101,13 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Customer.associate = models => {
-    // A Customer belongs to an Employee (Sales Rep)
+   
     Customer.belongsTo(models.Employee, {
       foreignKey: 'salesRepEmployeeNumber',
       as: 'salesRep',
     });
 
-    // A Customer has many Orders
+    
     Customer.hasMany(models.Order, {
       foreignKey: 'customerNumber',
       as: 'orders',

@@ -14,10 +14,10 @@ async function createProduct(req, res) {
 
     if(!productlineDetail && productLine){
       const defaultProductLineData = {
-        productLine: productLine, // Default name for the product line
-        textDescription: "This is a default product line description.", // Default text description
-        htmlDescription: "<p>This is a default HTML description for the product line.</p>", // Default HTML description
-        image: null, // Optional, can later be replaced with a placeholder BLOB or base64 image
+        productLine: productLine, 
+        textDescription: "This is a default product line description.", 
+        htmlDescription: "<p>This is a default HTML description for the product line.</p>", 
+        image: null, 
       };
 
       const productlineDetail= await productLineService.createProductLine(defaultProductLineData);
