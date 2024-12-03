@@ -8,9 +8,9 @@ async function createOrderDetail(req, res) {
     const orderDetailData = req.body;
     const {orderNumber} =req.body;
      
-    const orderData=null;
+    let orderData=null;
     if(orderNumber){
-      const orderData= await orderService.getOrderById(orderNumber);
+      orderData= await orderService.getOrderById(orderNumber);
       console.log(orderData)
     }
     
@@ -29,9 +29,10 @@ async function createOrderDetail(req, res) {
     }
 
     const {productCode}= req.body;
-    const productData=null;
+
+    let productData=null;
     if(productCode){
-      const productData= await productService.getProductById(productCode);
+      productData= await productService.getProductById(productCode);
     }
 
     if(!productData && productCode){
